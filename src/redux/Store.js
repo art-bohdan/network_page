@@ -1,9 +1,9 @@
-import dialogsReducer from "./dialogsReducer";
-import profileReducer from "./profileReducer";
-import siteBarReducer from "./siteBarReducer";
+import dialogsReducer from './dialogsReducer';
+import profileReducer from './profileReducer';
+import siteBarReducer from './siteBarReducer';
 
 let store = {
-  _state : {
+  _state: {
     profilePage: {
       posts: [
         { message: 'Hello my name is Bob', likeCount: 22 },
@@ -12,7 +12,11 @@ let store = {
       newPostText: 'Bob programer',
     },
     dialogsPage: {
-      messages: [{ id: 1, message: 'Hello' }, {id: 2, message: 'How are you?' }, {id: 3, message: 'Good luck!' }],
+      messages: [
+        { id: 1, message: 'Hello' },
+        { id: 2, message: 'How are you?' },
+        { id: 3, message: 'Good luck!' },
+      ],
       dialogs: [
         { id: 1, name: 'Bob' },
         { id: 2, name: 'Robert' },
@@ -22,25 +26,26 @@ let store = {
     },
     siteBar: {},
   },
-  _callSubscriber () {
+  _callSubscriber() {
     console.log('State is changed');
   },
-  
+
   getState() {
     return this._state;
   },
-  subscribe (observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
-  
+
   dispatch(action) {
-  
-    this._state.profilePage = profileReducer(this._state.profilePage, action);
-    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-    this._state.siteBar = siteBarReducer(this._state.siteBar, action);
+    //return new profile page
+    this._state.profilePage = profileReducer(this._state.profilePage, action); // call and take part of state, and action which came to us
+    //return new dialogs Page
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action); //
+    //return new siteBar
+    this._state.siteBar = siteBarReducer(this._state.siteBar, action); //
     this._callSubscriber(this._state);
-    
-  }
-}
+  },
+};
 
 export default store;

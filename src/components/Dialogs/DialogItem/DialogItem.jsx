@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './../Dialogs.module.css';
 
-const DialogItem = props => {
+const DialogItem = (props) => {
   let path = '/dialogs/' + props.id;
   return (
     <div className={`${classes.dialog} ${classes.active}`}>
@@ -10,6 +10,5 @@ const DialogItem = props => {
     </div>
   );
 };
-
 
 export default DialogItem;

@@ -3,19 +3,14 @@ import store from './redux/ReduxStore';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-let renderEntireThree = state => {
-  ReactDOM.render(
-    <BrowserRouter>
-      <App state={state} dispatch={store.dispatch.bind(store)} store = {store}/>
-    </BrowserRouter>,
-    document.getElementById('root')
-  );
-};
-
-renderEntireThree(store.getState());
-
-store.subscribe(() => {
-  let state = store.getState();
-  renderEntireThree(state);
-});
+ReactDOM.render(
+  <BrowserRouter>
+    {/* connect component provider(it used context API )store in order for children to use store library react-redux*/}
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById('root')
+);
