@@ -1,50 +1,28 @@
 import React from 'react'
 import styles from './Users.module.css'
+import * as axios from 'axios'
+import userPhoto from '../../assets/images/avatar.png'
 
 const Users = (props) => {
-  if (props.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        followed: true,
-        photoUrl: 'https://lh3.googleusercontent.com/proxy/WLgJs09Iv1AY7QOFSVftUbOg5k2b8XKMYfhCFbA7nbmQ6ryn7WXoxtX-xtPjnUcuDrbJF3sufHSsFdPWT8UPfm4tx-KSVVo',
-        fullName: 'Bobby',
-        status: 'I am a Boss',
-        location: {city: 'Warsaw', country: 'Poland'}
-      },
-      {
-        id: 2,
-        followed: false,
-        photoUrl: 'https://lh3.googleusercontent.com/proxy/WLgJs09Iv1AY7QOFSVftUbOg5k2b8XKMYfhCFbA7nbmQ6ryn7WXoxtX-xtPjnUcuDrbJF3sufHSsFdPWT8UPfm4tx-KSVVo',
-        fullName: 'Jonny',
-        status: 'I am a Boss',
-        location: {city: 'New York', country: 'USA'}
-      },
-      {
-        id: 3,
-        followed: true,
-        photoUrl: 'https://lh3.googleusercontent.com/proxy/WLgJs09Iv1AY7QOFSVftUbOg5k2b8XKMYfhCFbA7nbmQ6ryn7WXoxtX-xtPjnUcuDrbJF3sufHSsFdPWT8UPfm4tx-KSVVo',
-        fullName: 'Nikola',
-        status: 'I am a Boss',
-        location: {city: 'Krakow', country: 'Poland'}
-      },
-      {
-        id: 4,
-        followed: false,
-        photoUrl: 'https://lh3.googleusercontent.com/proxy/WLgJs09Iv1AY7QOFSVftUbOg5k2b8XKMYfhCFbA7nbmQ6ryn7WXoxtX-xtPjnUcuDrbJF3sufHSsFdPWT8UPfm4tx-KSVVo',
-        fullName: 'Tom',
-        status: 'I am a Boss',
-        location: {city: 'Kiev', country: 'Ukraine'}
-      },
-    ])
+
+  let getUsers = () => {
+    if (props.users.length === 0) {
+      axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        props.setUsers(response.data.items)
+      })
+
+    }
   }
+
 
   return (
     <div>
+      <button onClick={getUsers}>Get Users</button>
       {props.users.map(user => <div key={user.id}>
         <span>
           <div>
-  <img src={user.photoUrl} alt='avatar' className={styles.userPhoto}/>
+            <img src={user.photos.small != null ? user.photos.small : userPhoto} alt='avatar'
+                 className={styles.userPhoto}/>
           </div>
           <div>
             {user.followed
@@ -58,12 +36,12 @@ const Users = (props) => {
         </span>
         <span>
           <span>
-            <div>{user.fullName}</div>
+            <div>{user.name}</div>
             <div>{user.status}</div>
           </span>
           <span>
-            <div>{user.location.country}</div>
-            <div>{user.location.city}</div>
+            <div>{'user.location.country'}</div>
+            <div>{'user.location.city'}</div>
           </span>
         </span>
 
