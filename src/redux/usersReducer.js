@@ -11,8 +11,10 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW: {
       return {
         ...state,
+        //return new array based on the old one
         users: state.users.map(user => {
           if (user.id === action.userId) {
+            //if Id value matches, return  new followed
             return {...user, followed: true}
           }
           return user;
@@ -33,6 +35,7 @@ const usersReducer = (state = initialState, action) => {
       ;
     case SET_USERS: {
       return {
+        //take old users and will add new users who come with action
         ...state, users: [...state.users, ...action.users],
       }
     }
@@ -47,6 +50,7 @@ export const followAC = (userId) => (
   {type: FOLLOW, userId});
 export const unfollowAC = (userId) => (
   {type: UNFOLLOW, userId});
+//
 export const setUsersAC = (users) => (
   {type: SET_USERS, users});
 

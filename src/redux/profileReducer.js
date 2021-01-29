@@ -18,6 +18,7 @@ const profileReducer = (state = initialState, action) => {
       };
       return {
         ...state,
+        //create copy and add element to array
         posts : [...state.posts, (newPost)],
         newPostText : '',
       };
