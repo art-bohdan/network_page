@@ -3,14 +3,15 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 // import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Content = (props) => {
+const Profile = (props) => {
   debugger;
   return (
-    <div className=''>
-      <ProfileInfo />
+    <div>
+      <ProfileInfo profile={props.profile} />
       <MyPostsContainer />
     </div>
   );
 };
 
-export default Content;
+
+export default Profile;

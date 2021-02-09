@@ -3,7 +3,7 @@ import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  let postsElement = props.posts.map((post) => <Post message={post.message} likeCount={post.likeCount} />);
+  // let postsElement = ;
 
   let newPost = React.createRef();
 
@@ -27,7 +27,7 @@ const MyPosts = (props) => {
       <div>
         <button onClick={onAddPost}>Send message</button>
       </div>
-      <div>{postsElement}</div>
+      <div>{props.posts.map((post) => <Post message={post.message} key={post.id} likeCount={post.likeCount} />)}</div>
     </div>
   );
 };
