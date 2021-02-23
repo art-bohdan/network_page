@@ -19,9 +19,9 @@ const App = () => {
         {/*Route this component which returns JSX when the path = url*/}
         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
         <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+        <Route path='/users' render={() => <UsersContainer/>}/>
         <Route path='/about' render={() => <About/>}/>
         <Route path='/music' render={() => <Music/>}/>
-        <Route path='/users' render={() => <UsersContainer/>}/>
         <Route path='/login' render={() => <Login/>}/>
       </div>
     </div>

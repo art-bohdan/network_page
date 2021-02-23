@@ -2,13 +2,11 @@ import React from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from './ProfileStatus';
-import {updateUsersStatus} from "../../../redux/profileReducer";
 
 const ProfileInfo = (props) => {
   if(!props.profile) {
     return <Preloader/>
   }
-debugger;
   return (
     <div>
       <div className={classes.background}>
