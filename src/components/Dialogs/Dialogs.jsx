@@ -10,7 +10,7 @@ const Dialogs = (props) => {
 
   let dialogElement = state.dialogs.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />);
   let messageElement = state.messages.map((message) => <Message message={message.message} key={message.id} id={message.id} />);
-  let newMessageBody = state.newMessageBody;
+  // let newMessageBody = state.newMessageBody;
 
   // let onSendMessageClick = () => {
   //   props.SendMessage();
