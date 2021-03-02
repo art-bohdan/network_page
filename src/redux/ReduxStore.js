@@ -7,6 +7,7 @@ import authReducer from "./authReducer";
 import thunkMiddleware from 'redux-thunk'
 //от сюда thunk импортируем это thunkMiddleware
 import { reducer as formReducer } from 'redux-form'
+import appReducer from "./appReducer";
 //combine Reducers
 let reducers = combineReducers({
   profilePage: profileReducer,
@@ -14,6 +15,7 @@ let reducers = combineReducers({
   siteBar: siteBarReducer,
   usersPage: usersReducer,
   auth: authReducer,
+  app: appReducer,
   form: formReducer,
 
 });
