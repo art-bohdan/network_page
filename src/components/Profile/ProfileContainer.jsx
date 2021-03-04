@@ -8,7 +8,6 @@ import {
 } from '../../redux/profileReducer';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../../HOC/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
   // classes Component makes a request to the server
@@ -16,7 +15,7 @@ class ProfileContainer extends React.Component {
     let userId = this.props.match.params.userId;
     if (!userId) {
       userId = this.props.authorizedUserId;
-      if(!userId) {
+      if (!userId) {
         this.props.history.push('/login');
       }
     }
@@ -25,6 +24,7 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+    console.log('render profile');
     return (
       <Profile
         {...this.props}
