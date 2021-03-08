@@ -6,12 +6,11 @@ import {maxLengthCreator, required} from "../../../helpers/validators/validators
 import {Textarea} from "../../common/FormsControls/FormsControls";
 
 let maxLength10 = maxLengthCreator(10)
-
 const MyPosts = (props) => {
-
   let onAddPost = (values) => {
       props.addPost(values.newPostText);
     };
+  console.log('render yo')
 
   return (
     <div className={classes.postBlock}>
