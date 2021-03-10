@@ -13,16 +13,14 @@ export const usersAPI = {
     return instance
       .get(`users?page=${currentPage}&count=${pageSize}`, {
         withCredentials: true,
-      })
-      .then((response) => response.data);
+      });
   },
   follow(userId) {
-    return instance.post(`follow/${userId}`).then((response) => response.data);
+    return instance.post(`follow/${userId}`);
   },
   unFollow(userId) {
     return instance
-      .delete(`follow/${userId}`)
-      .then((response) => response.data);
+      .delete(`follow/${userId}`);
   },
   getProfile(userId) {
     console.warn('obsolete method. Please profileAPI  object');
@@ -44,7 +42,7 @@ export const profileAPI = {
 
 export const authAPI = {
   me() {
-    return instance.get(`auth/me`).then((response) => response.data);
+    return instance.get(`auth/me`);
   },
   login(email, password, rememberMe = false) {
     return instance.post('auth/login', { email, password, rememberMe });
