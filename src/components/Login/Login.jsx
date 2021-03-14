@@ -20,7 +20,7 @@ const LoginForm = ({ handleSubmit, error }) => {
         'rememberMe',
         Input,
         { type: 'checkbox' },
-        'Remember\n' + 'me'
+        'Remember me'
       )}
       {error && <div className={classes.formSummaryError}>{error}</div>}
       <div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import About from './components/About/About';
@@ -9,11 +9,12 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import { connect } from 'react-redux';
+import {connect, Provider} from 'react-redux';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import { initializeApp } from './redux/appReducer';
 import Preloader from './components/common/Preloader/Preloader';
+import store from "./redux/ReduxStore";
 
 class App extends React.Component {
   componentDidMount() {
@@ -45,7 +46,21 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 });
-export default compose(
+
+let AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
+
+const SocialNetwork = (props) => {
+  return (
+    <BrowserRouter>
+    {/* connect component provider(it used context API )store in order for children to use store library react-redux*/}
+    <Provider store={store}>
+      <AppContainer/>
+    </Provider>
+  </BrowserRouter>
+  )
+}
+
+export default SocialNetwork;
